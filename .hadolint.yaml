@@ -1,0 +1,5 @@
+---
+ignored:
+  - DL3008 # ignore pin version in apt get
+  - DL3013 # ignore pin version in pip
+  - DL4006 # ignore shell option (pipefail) for sh/busybox

@@ -1,0 +1,30 @@
+---
+Language: Cpp
+BasedOnStyle: Google
+# Merge functions defined inside a class and empty functions
+AllowShortFunctionsOnASingleLine: Inline
+# Not analyze the formatted file for the most common alignment of & and *
+DerivePointerAlignment: false
+# Do not split clang-tidy suppression comments.
+CommentPragmas: "^ NOLINT(NEXTLINE|BEGIN|END)?"
+# Specify include statement order. This implements the order specified in the
+# Google C++ Style Guide.
+#
+# To obtain updated lists of system headers used in the below expressions, see:
+# http://stackoverflow.com/questions/2027991/list-of-standard-header-files-in-c-and-c/2029106#2029106.
+IncludeCategories:
+  # C system headers.
+  - Regex: '^[<"](aio|arpa/inet|assert|complex|cpio|ctype|curses|dirent|dlfcn|errno|fcntl|fenv|float|fmtmsg|fnmatch|ftw|glob|grp|iconv|inttypes|iso646|langinfo|libgen|limits|locale|math|monetary|mqueue|ndbm|netdb|net/if|netinet/in|netinet/tcp|nl_types|poll|pthread|pwd|regex|sched|search|semaphore|setjmp|signal|spawn|stdalign|stdarg|stdatomic|stdbool|stddef|stdint|stdio|stdlib|stdnoreturn|string|strings|stropts|sys/ipc|syslog|sys/mman|sys/msg|sys/resource|sys/select|sys/sem|sys/shm|sys/socket|sys/stat|sys/statvfs|sys/time|sys/times|sys/types|sys/uio|sys/un|sys/utsname|sys/wait|tar|term|termios|tgmath|threads|time|trace|uchar|ulimit|uncntrl|unistd|utime|utmpx|wchar|wctype|wordexp)\.h[">]$'
+    Priority: 1
+  # C++ std library headers (as of C++17).
+  - Regex: '^[<"](experimental/)?(algorithm|any|array|atomic|bitset|cassert|ccomplex|cctype|cerrno|cfenv|cfloat|charconv|chrono|cinttypes|ciso646|climits|clocale|cmath|codecvt|complex|condition_variable|csetjmp|csignal|cstdalign|cstdarg|cstdbool|cstddef|cstdint|cstdio|cstdlib|cstring|ctgmath|ctime|cuchar|cwchar|cwctype|deque|exception|execution|filesystem|forward_list|fstream|functional|future|initializer_list|iomanip|ios|iosfwd|iostream|istream|iterator|limits|list|locale|map|memory|memory_resource|mutex|new|numeric|optional|ostream|queue|random|ratio|regex|scoped_allocator|set|shared_mutex|sstream|stack|stdexcept|streambuf|string|string_view|strstream|system_error|thread|tuple|type_traits|typeindex|typeinfo|unordered_map|unordered_set|utility|valarray|variant|vector)[">]$'
+    Priority: 2
+  # Other libraries' headers (with angle brackets).
+  - Regex: "^<"
+    Priority: 3
+  # This project's headers (with quotes).
+  - Regex: '^"'
+    Priority: 4
+---
+Language: Proto
+BasedOnStyle: Google

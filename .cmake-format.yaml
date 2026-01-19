@@ -1,0 +1,199 @@
+---
+# parse: リストファイルの解析に影響するオプション
+parse:
+  # additional_commands:
+  #  カスタムCMake関数の構造を指定
+  additional_commands:
+    protobuf_generate:
+      flags:
+        - BAR
+      kwargs:
+        TARGET: "*"
+        LANGUAGE: "*"
+        OUT_VAR: "*"
+        IMPORT_DIRS: "*"
+  # override_spec:
+  #  コマンドごとに利用可能な場合に構成をオーバーライド
+  override_spec: {}
+  # vartags:
+  #  変数のタグを指定
+  vartags: []
+  # proptags:
+  #  プロパティのタグを指定
+  proptags: []
+# format: フォーマットに影響するオプション
+format:
+  # disable:
+  #  フォーマットを完全に無効にし、cmake-formatをノーオペレーションにする
+  disable: false
+  # line_width:
+  #  フォーマットされたCMakeファイルに許可される幅
+  line_width: 100
+  # tab_size:
+  #  インデントのためにタブをいくつ使用するか
+  tab_size: 2
+  # use_tabchars:
+  #  Trueの場合、行はタブ文字（utf-8 0x09）を使用してインデントされ、<tab_size>スペース文字（utf-8 0x20）ではなくなります。
+  #  レイアウトが分数のタブ文字を必要とする場合、分数のインデントの動作は <fractional_tab_policy> によって制御されます。
+  use_tabchars: false
+  # fractional_tab_policy:
+  #  <use_tabchars> がTrueの場合、この変数の値は、空白置換の際に端数インデントをどのように扱うかを示す
+  # 'use-space' に設定した場合、端数インデントは空白(utf-8 0x20)のまま残される
+  # 'round-up' に設定した場合、端数インデントはタブ文字(utf-8 0x09)に置き換えられ、効果的に列を次のタブストップに移動させる
+  fractional_tab_policy: use-space
+  # max_subgroups_hwrap:
+  #  引数グループがこれ以上のサブグループ（pargまたはkwargグループ）を含む場合、垂直レイアウトに強制します。
+  max_subgroups_hwrap: 2
+  # max_pargs_hwrap:
+  #  位置引数グループがこれ以上の引数を含む場合、垂直レイアウトに強制します。
+  max_pargs_hwrap: 6
+  # max_rows_cmdline:
+  #  cmdline位置引数グループがこれ以上の行を消費し、ネストしていない場合、レイアウトを無効にし（およびネストし）、拒否します
+  max_rows_cmdline: 2
+  # separate_ctrl_name_with_space:
+  #  Trueの場合、フローコントロールの名前を括弧からスペースで区切ります
+  separate_ctrl_name_with_space: false
+  # separate_fn_name_with_space:
+  #  Trueの場合、関数名を括弧からスペースで区切ります
+  separate_fn_name_with_space: false
+  # dangle_parens:
+  #  ステートメントが1行を超える場合、閉じかっこを独自の行に垂らします。
+  dangle_parens: false
+  # dangle_align:
+  #  トレーリングかっこを 'dangle' する場合、これに対してアラインします。
+  #  `prefix`: ステートメントの開始、 `prefix-indent`: ステートメントの開始+1インデントレベル、 `child`: 引数の列にアライン
+  dangle_align: prefix
+  # min_prefix_chars:
+  #  ステートメントのスペルの長さ（空白と括弧を含む）がこの量より小さい場合、ネストされたレイアウトを強制的に拒否します。
+  min_prefix_chars: 4
+  # max_prefix_chars:
+  #  ステートメントのスペルの長さ（空白と括弧を含む）がタブ幅よりもこの量だけ大きい場合、非ネストされたレイアウトを強制的に拒否します。
+  max_prefix_chars: 10
+  # max_lines_hwrap:
+  #  候補のレイアウトが水平にラップされているが、これ以上の行を超える場合、レイアウトを拒否します。
+  max_lines_hwrap: 2
+  # line_ending:
+  #  出力で使用する行末のスタイル。
+  line_ending: unix
+  # command_case:
+  #  コマンドの名前を常に 'lower' または 'upper' ケースで一貫してフォーマットします
+  command_case: canonical
+  # keyword_case:
+  #  キーワードを常に 'lower' または 'upper' ケースで一貫してフォーマットします
+  keyword_case: unchanged
+  # always_wrap:
+  #  常にラップする必要があるコマンド名のリスト
+  always_wrap: []
+  # enable_sort:
+  #  Trueの場合、ソート可能な引数リストが辞書順にソートされます
+  enable_sort: true
+  # autosort:
+  #  Trueの場合、パーサーは引数リストがソート可能かどうかを（注釈なしで）推測する可能性があります。
+  autosort: false
+  # require_valid_layout:
+  #  デフォルトでは、cmake-formatが望ましい行幅にすべてを適切に収めることができない場合、最後に試みたものを適用します。
+  #  ただし、このフラグがTrueの場合、cmake-formatはエラーを出力し、非ゼロのステータスコードで終了し、何も書き出しません。
+  require_valid_layout: false
+  # layout_passes:
+  #  レイアウトノードをラップの決定のリストにマッピングするディクショナリ。詳細についてはドキュメントを参照してください。
+  layout_passes: {}
+# markup: コメントのリフローとフォーマットに影響するオプション
+markup:
+  # bullet_char:
+  #  箇条書きリストに使用する文字
+  bullet_char: "*"
+  # enum_char:
+  #  列挙リストの数字の後に使用する句読点文字
+  enum_char: .
+  # first_comment_is_literal:
+  #  コメントのマークアップが有効な場合、各リストファイルの最初のコメントブロックをリフローしないでください。
+  #  著作権/ライセンスのステートメントのフォーマットを保持するために使用します。
+  first_comment_is_literal: false
+  # literal_comment_pattern:
+  #  コメントのマークアップが有効な場合、この（正規表現）パターンに一致するコメントブロックをリフローしないでください。デフォルトは `None`（無効）です。
+  literal_comment_pattern: null
+  # fence_pattern:
+  #  コメント内のプリフォーマットフェンスに一致する正規表現
+  #  デフォルト= ``r'^\s*([`~]{3}[`~]*)(.*)$'``
+  fence_pattern: ^\s*([`~]{3}[`~]*)(.*)$
+  # ruler_pattern:
+  #  コメント内のルーラーに一致する正規表現 デフォルト=
+  #  '``r''^\s*[^\w\s]{3}.*[^\w\s]{3}$''``'
+  ruler_pattern: ^\s*[^\w\s]{3}.*[^\w\s]{3}$
+  # explicit_trailing_pattern:
+  #  コメント行がこのパターンで始まる場合、それは直前の引数の後に明示的にトレーリングコメントです。デフォルトは '#<' です。
+  explicit_trailing_pattern: "#<"
+  # hashruler_min_length:
+  #  コメント行が少なくともこの数の連続したハッシュ文字で始まる場合、これらをlstrip()しません。
+  #  これにより、最初のハッシュ文字がスペースで区切られていないレイジーなハッシュルーラーが可能になります。
+  hashruler_min_length: 10
+  # canonicalize_hashrulers:
+  #  Trueの場合、ハッシュルーラー内の最初のハッシュ文字と残りのハッシュ文字の間にスペースを挿入し、その長さを列に合わせます。
+  canonicalize_hashrulers: true
+  # enable_markup:
+  #  コメントのマークアップのパースとリフローを有効にする
+  enable_markup: false
+# lint: リンタに影響するオプション
+lint:
+  # disabled_codes:
+  #  無効にするリンターコードのリスト
+  disabled_codes: []
+  # function_pattern:
+  #  有効な関数名を記述する正規表現パターン
+  function_pattern: "[0-9a-z_]+"
+  # macro_pattern:
+  #  有効なマクロ名を記述する正規表現パターン
+  macro_pattern: "[0-9A-Z_]+"
+  # global_var_pattern:
+  #  グローバル（キャッシュ）スコープの変数名に対する有効な名前を記述する正規表現パターン
+  global_var_pattern: "[A-Z][0-9A-Z_]+"
+  # internal_var_pattern:
+  #  グローバルスコープの（ただし内部的な意味を持つ）変数名に対する有効な名前を記述する正規表現パターン
+  internal_var_pattern: _[A-Z][0-9A-Z_]+
+  # local_var_pattern:
+  #  ローカルスコープの変数名に対する有効な名前を記述する正規表現パターン
+  local_var_pattern: "[a-z][a-z0-9_]+"
+  # private_var_pattern:
+  #  プライベートディレクトリ変数に対する有効な名前を記述する正規表現パターン
+  private_var_pattern: _[0-9a-z_]+
+  # public_var_pattern:
+  #  パブリックディレクトリ変数に対する有効な名前を記述する正規表現パターン
+  public_var_pattern: "[A-Z][0-9A-Z_]+"
+  # argument_var_pattern:
+  #  関数/マクロの引数およびループ変数に対する有効な名前を記述する正規表現パターン
+  argument_var_pattern: "[a-z][a-z0-9_]+"
+  # keyword_pattern:
+  #  関数やマクロで使用されるキーワードの有効な名前を記述する正規表現パターン
+  keyword_pattern: "[A-Z][0-9A-Z_]+"
+  # max_conditionals_custom_parser:
+  #  C0201のヒューリスティックにおいて、パーサーと見なす前にループ内でいくつの条件を一致させるか
+  max_conditionals_custom_parser: 2
+  # min_statement_spacing:
+  #  ステートメント間に少なくともこれだけの改行を要求する
+  min_statement_spacing: 1
+  # max_statement_spacing:
+  #  ステートメント間にこれ以上の改行を許容しない
+  max_statement_spacing: 2
+  max_returns: 6
+  max_branches: 12
+  max_arguments: 5
+  max_localvars: 15
+  max_statements: 50
+# encode: ファイルエンコーディングに影響するオプション
+encode:
+  # emit_byteorder_mark:
+  #  trueの場合、ファイルの先頭にUnicodeバイトオーダーマーク（BOM）を出力する
+  emit_byteorder_mark: false
+  # input_encoding:
+  #  入力ファイルのエンコーディングを指定する。デフォルトはutf-8
+  input_encoding: utf-8
+  # output_encoding:
+  #  出力ファイルのエンコーディングを指定する。デフォルトはutf-8。
+  #  注意: CMakeはutf-8のみをサポートすると主張しているため、他のエンコーディングを使用する際は注意が必要です
+  output_encoding: utf-8
+# misc: その他の構成オプション
+misc:
+  # per_command:
+  #  コマンドごとの構成オーバーライドを含む辞書
+  #  現在は `command_case` のみサポートされています。
+  per_command: {}
