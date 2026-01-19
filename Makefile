@@ -19,6 +19,7 @@ override CMAKEFLAGS		+= -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 override CMAKEFLAGS		+= --toolchain $(topdir)/cmake/toolchains/$(PLATFORM).cmake
 
 .PHONY: all client server launch test clean
+.DEFAULT_GOAL = all
 
 all: client server
 
@@ -48,4 +49,4 @@ test: $(builddir)/sample-grpc-test
 	# ctest --test-dir $(builddir) --output-on-failure
 
 clean:
-	rm -rf $(builddir) $(installdir)
+	$(RM) -r targets
